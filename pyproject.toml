@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "world-legal-bench"
+version = "1.4.1"
+description = "Native-language constitutional and public-law reasoning across twelve jurisdictions"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT (code); CC-BY-4.0 (authored dataset and documentation)"}
+authors = [{name = "World Legal Bench contributors"}]
+keywords = ["benchmark", "legal-reasoning", "multilingual", "evaluation", "constitutional-law"]
+classifiers = ["Programming Language :: Python :: 3", "Topic :: Scientific/Engineering :: Artificial Intelligence"]
+
+[project.scripts]
+wlb = "world_legal_bench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

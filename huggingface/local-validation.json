@@ -1,0 +1,34 @@
+{
+  "scope": "local_metadata_and_dataset_loading",
+  "hosted_viewer_verified": false,
+  "networking_disabled": true,
+  "split": "test",
+  "rows": 720,
+  "columns": [
+    "country",
+    "language",
+    "question_id",
+    "question",
+    "choices",
+    "answer",
+    "answer_text",
+    "task_family",
+    "source_urls"
+  ],
+  "country_counts": {
+    "US": 60,
+    "CA": 60,
+    "AU": 60,
+    "KR": 60,
+    "FR": 60,
+    "BR": 60,
+    "MX": 60,
+    "CN": 60,
+    "JP": 60,
+    "IN": 60,
+    "ZA": 60,
+    "ID": 60
+  },
+  "datasets_version": "5.2.0",
+  "huggingface_hub_version": "2.4.0"
+}

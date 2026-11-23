@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420" role="img" aria-labelledby="title desc">
+<title id="title">World Legal Bench</title><desc id="desc">Native-language legal reasoning across twelve jurisdictions. Dataset release 1.4.1.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#091321"/><stop offset="1" stop-color="#153341"/></linearGradient><linearGradient id="line"><stop stop-color="#60ded3"/><stop offset="1" stop-color="#a6cfe6"/></linearGradient></defs>
+<rect width="1600" height="420" rx="20" fill="url(#bg)"/>
+<g transform="translate(1350 220)" fill="none" stroke="#b4d6dc" stroke-opacity=".15" stroke-width="1.4"><circle r="164"/><ellipse rx="75" ry="164"/><ellipse rx="130" ry="164"/><path d="M-164 0H164M-148-70H148M-148 70H148M-105-126H105M-105 126H105M0-164V164"/></g>
+<rect x="75" y="64" width="42" height="4" rx="2" fill="#71dfcf"/><text x="134" y="74" fill="#a4c4d4" font-family="Arial,sans-serif" font-size="16" letter-spacing="4">CONSTITUTIONAL &amp; PUBLIC LAW</text>
+<text x="72" y="176" fill="#f7fafc" font-family="Georgia,serif" font-size="72" letter-spacing="-2">World Legal Bench</text>
+<text x="77" y="228" fill="#b8d1dc" font-family="Arial,sans-serif" font-size="25">Native-language legal reasoning across twelve jurisdictions</text>
+<path d="M77 270H1050" stroke="url(#line)" stroke-opacity=".5"/>
+<text x="77" y="322" fill="#f4f9fb" font-family="Arial,sans-serif" font-size="22">720 questions</text><text x="300" y="322" fill="#b8d1dc" font-family="Arial,sans-serif" font-size="22">12 jurisdictions</text><text x="548" y="322" fill="#b8d1dc" font-family="Arial,sans-serif" font-size="22">9 languages</text><text x="767" y="322" fill="#b8d1dc" font-family="Arial,sans-serif" font-size="22">Single-turn MCQ</text>
+<text x="78" y="372" fill="#7397a9" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">DATASET v1.4.1-release</text>
+</svg>

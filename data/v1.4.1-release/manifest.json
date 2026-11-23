@@ -1,0 +1,27 @@
+{
+  "name": "World Legal Bench",
+  "version": "1.4.1-release",
+  "mode": "closed_book",
+  "case_count": 720,
+  "jurisdictions": 12,
+  "languages": 9,
+  "cases_per_country": 60,
+  "answer_labels": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "scoring_protocol": "world-legal-bench-mcq-v1.3",
+  "parser_version": "world-legal-final-choice-v1.3",
+  "files": {
+    "data/v1.4.1-release/questions.jsonl": "b1418cdbf8d6c8059f36539e7966901aafbe7ad0bdcb4b54a270a7d74ccfe4e8",
+    "data/v1.4.1-release/answers.jsonl": "bbcf34560e3fe169520d7b4791a95deb5d9e20a8a238805a505c0ac9e9a30874",
+    "data/v1.4.1-release/sources.jsonl": "4cbd2b0777b804e36ae3e974cce8fe0f7d1782e9be60537a049306662a29e564",
+    "data/jurisdictions.json": "f0b8975c8a5a2bec45ac5e76745a74d873a7288117eda0862d941d2f1f059869",
+    "provenance/selection.jsonl": "69939548b9593a4b43599adad5ef3773b682c1993d191ea419730a5b5b46dbac",
+    "provenance/reviews.jsonl": "e353e3ec6b19f0685d23e259d43fcf3cd774fad5efb0bd854a0ab1c3e8c324ed",
+    "provenance/reference_selection.json": "31c7b7bb86ec0076e15ca6add1c458a06c1dd610c9ef50975aa3bb0336d55996",
+    "provenance/release.json": "d1e4b95acd57c7fbd035c786dee20a64e8464ac16f4ccb496efb65b3fe01b8d9"
+  }
+}

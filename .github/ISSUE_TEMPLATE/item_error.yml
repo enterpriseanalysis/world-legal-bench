@@ -1,0 +1,30 @@
+name: Dataset item issue
+description: Report an answer, ambiguity, wording, or legal-source problem.
+body:
+  - type: input
+    id: item
+    attributes:
+      label: Question ID
+      placeholder: WLB14-US-J0003-001
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Dataset version
+      value: 1.4.1-release
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Disputed wording or reference answer
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Official source, provision, and legal edition
+      description: Explain the discrepancy using the question's stated legal version.
+    validations:
+      required: true

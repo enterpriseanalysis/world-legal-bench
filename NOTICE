@@ -1,0 +1,20 @@
+World Legal Bench v1.4.1-release
+
+License scope
+
+- MIT: src/, scripts/, tests/, examples/*.py, pyproject.toml, and executable configuration.
+- CC BY 4.0: original authored data/ and provenance/ annotations, Markdown documentation,
+  schemas, and original assets, to the extent the contributors hold the relevant rights.
+- Third-party material: referenced laws, judgments, provision titles, and quotations
+  retain their existing rights status. No ownership of official source material,
+  endorsement by a government, or authority to relicense third-party material is claimed.
+
+The dataset distributes official source references and available digests, rather
+than bulk official legal source texts. Some questions and rationales refer to or
+quote legal terms. Source URLs and locators are provided for attribution and review.
+
+The deterministic final-answer parser is extracted from the evaluation implementation
+used for this dataset release. It is distributed as standalone code under MIT.
+
+The benchmark is an evaluation artifact, not legal advice. AI-assisted source quick
+checks are not independent legal-expert certification.

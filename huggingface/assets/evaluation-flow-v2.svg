@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="338.4pt" viewBox="0 0 864 338.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 338.4
+L 864 338.4
+L 864 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 28.3248 261.63819
+L 184.7664 261.63819
+Q 191.052 261.63819 191.052 255.96576
+L 191.052 151.34094
+Q 191.052 145.66851 184.7664 145.66851
+L 28.3248 145.66851
+Q 22.0392 145.66851 22.0392 151.34094
+L 22.0392 255.96576
+Q 22.0392 261.63819 28.3248 261.63819
+z
+" clip-path="url(#pd31ea7ee35)" style="fill: #f7f9fb; stroke: #dbe3e9; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 195.147598 203.65335
+Q 212.703727 203.65335 228.806413 203.65335
+" clip-path="url(#pd31ea7ee35)" style="fill: none; stroke: #a3b3c0; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 222.806413 200.65335
+L 228.806413 203.65335
+L 222.806413 206.65335
+z
+" clip-path="url(#pd31ea7ee35)" style="fill: #a3b3c0; stroke: #a3b3c0; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 244.8288 261.63819
+L 401.2704 261.63819
+Q 407.556 261.63819 407.556 255.96576
+L 407.556 151.34094
+Q 407.556 145.66851 401.2704 145.66851
+L 244.8288 145.66851
+Q 238.5432 145.66851 238.5432 151.34094
+L 238.5432 255.96576
+Q 238.5432 261.63819 244.8288 261.63819
+z
+" clip-path="url(#pd31ea7ee35)" style="fill: #f7f9fb; stroke: #dbe3e9; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 411.651598 203.65335
+Q 429.207727 203.65335 445.310413 203.65335
+" clip-path="url(#pd31ea7ee35)" style="fill: none; stroke: #a3b3c0; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 439.310413 200.65335
+L 445.310413 203.65335
+L 439.310413 206.65335
+z
+" clip-path="url(#pd31ea7ee35)" style="fill: #a3b3c0; stroke: #a3b3c0; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 461.3328 261.63819
+L 617.7744 261.63819
+Q 624.06 261.63819 624.06 255.96576
+L 624.06 151.34094
+Q 624.06 145.66851 617.7744 145.66851
+L 461.3328 145.66851
+Q 455.0472 145.66851 455.0472 151.34094
+L 455.0472 255.96576
+Q 455.0472 261.63819 461.3328 261.63819
+z
+" clip-path="url(#pd31ea7ee35)" style="fill: #f7f9fb; stroke: #dbe3e9; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 628.155598 203.65335
+Q 645.711727 203.65335 661.814413 203.65335
+" clip-path="url(#pd31ea7ee35)" style="fill: none; stroke: #a3b3c0; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 655.814413 200.65335
+L 661.814413 203.65335
+L 655.814413 206.65335
+z
+" clip-path="url(#pd31ea7ee35)" style="fill: #a3b3c0; stroke: #a3b3c0; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 677.8368 261.63819
+L 834.2784 261.63819
+Q 840.564 261.63819 840.564 255.96576
+L 840.564 151.34094
+Q 840.564 145.66851 834.2784 145.66851
+L 677.8368 145.66851
+Q 671.5512 145.66851 671.5512 151.34094
+L 671.5512 255.96576
+Q 671.5512 261.63819 677.8368 261.63819
+z
+" clip-path="url(#pd31ea7ee35)" style="fill: #f7f9fb; stroke: #dbe3e9; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #187e70" x="35.3088" y="164.57661" transform="rotate(-0 35.3088 164.57661)">01  QUESTION</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(35.3088 195.744926)">Legal scenario</text>
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(35.3088 215.277739)">+ four choices</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #657687" x="35.3088" y="246.51171" transform="rotate(-0 35.3088 246.51171)">Authored test language</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #168394" x="251.8128" y="164.57661" transform="rotate(-0 251.8128 164.57661)">02  MODEL</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(251.8128 195.744926)">One independent</text>
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(251.8128 213.969926)">single-turn request</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #657687" x="251.8128" y="246.51171" transform="rotate(-0 251.8128 246.51171)">No retrieval or agent tools</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8270b5" x="468.3168" y="164.57661" transform="rotate(-0 468.3168 164.57661)">03  PARSER</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(468.3168 195.744926)">Unique final</text>
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(468.3168 214.469848)">A, B, C or D</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #657687" x="468.3168" y="246.51171" transform="rotate(-0 468.3168 246.51171)">Multilingual answer extraction</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #bc7444" x="684.8208" y="164.57661" transform="rotate(-0 684.8208 164.57661)">04  SCORE</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(684.8208 195.744926)">Compare choice</text>
+    <text style="font-size: 13.5px; font-family: 'DejaVu Sans'; fill: #203d50" transform="translate(684.8208 213.969926)">with reference key</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 8.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #657687" x="684.8208" y="246.51171" transform="rotate(-0 684.8208 246.51171)">Country accuracy + macro score</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #657687" x="25.5312" y="291.26088" transform="rotate(-0 25.5312 291.26088)">Gold answers are used by the scorer only.</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #657687" x="25.5312" y="317.10195" transform="rotate(-0 25.5312 317.10195)">Invalid and failed-inference responses remain unsuccessful; conflicting final choices are not guessed.</text>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #163247" x="21.6" y="20.304" transform="rotate(-0 21.6 20.304)">One question. One final choice. Deterministic scoring.</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 11.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #5c6c7d" x="21.6" y="45.684" transform="rotate(-0 21.6 45.684)">Closed-book evaluation; source annotations and gold answers remain outside model input.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd31ea7ee35">
+   <rect x="12.96" y="74.448" width="838.08" height="252.108"/>
+  </clipPath>
+ </defs>
+</svg>

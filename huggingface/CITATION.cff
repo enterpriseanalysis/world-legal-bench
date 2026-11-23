@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Please cite this dataset version when reporting results."
+type: dataset
+title: "World Legal Bench: Native-Language Legal Reasoning Across Twelve Jurisdictions"
+version: "1.4.1-release"
+date-released: 2026-11-23
+authors:
+  - name: "World Legal Bench contributors"
+license: CC-BY-4.0
+abstract: >-
+  A difficulty-selected, source-linked benchmark of constitutional and public-law
+  reasoning with jurisdiction-specific test languages and country-balanced scoring.
+  The release includes frozen questions, reference answers, selection provenance,
+  and a standalone evaluation toolkit.
+keywords:
+  - legal reasoning
+  - multilingual evaluation
+  - constitutional law
+  - public law
+  - large language models

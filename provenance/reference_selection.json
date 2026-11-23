@@ -1,0 +1,96 @@
+{
+  "version": "1.4.1-release",
+  "kind": "retrospective_selection_profile",
+  "model": "qwen3.8-flash",
+  "new_model_runs": false,
+  "total": 720,
+  "correct": 128,
+  "incorrect": 592,
+  "accuracy": 17.77777777777778,
+  "by_country": [
+    {
+      "country": "US",
+      "total": 60,
+      "correct": 17,
+      "incorrect": 43,
+      "accuracy": 28.333333333333332
+    },
+    {
+      "country": "CA",
+      "total": 60,
+      "correct": 5,
+      "incorrect": 55,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "country": "AU",
+      "total": 60,
+      "correct": 5,
+      "incorrect": 55,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "country": "KR",
+      "total": 60,
+      "correct": 5,
+      "incorrect": 55,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "country": "FR",
+      "total": 60,
+      "correct": 5,
+      "incorrect": 55,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "country": "BR",
+      "total": 60,
+      "correct": 15,
+      "incorrect": 45,
+      "accuracy": 25.0
+    },
+    {
+      "country": "MX",
+      "total": 60,
+      "correct": 9,
+      "incorrect": 51,
+      "accuracy": 15.0
+    },
+    {
+      "country": "CN",
+      "total": 60,
+      "correct": 45,
+      "incorrect": 15,
+      "accuracy": 75.0
+    },
+    {
+      "country": "JP",
+      "total": 60,
+      "correct": 5,
+      "incorrect": 55,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "country": "IN",
+      "total": 60,
+      "correct": 5,
+      "incorrect": 55,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "country": "ZA",
+      "total": 60,
+      "correct": 5,
+      "incorrect": 55,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "country": "ID",
+      "total": 60,
+      "correct": 7,
+      "incorrect": 53,
+      "accuracy": 11.666666666666666
+    }
+  ]
+}

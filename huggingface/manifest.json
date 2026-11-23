@@ -1,0 +1,26 @@
+{
+  "dataset": "World Legal Bench",
+  "version": "1.4.1-release",
+  "config": "default",
+  "split": "test",
+  "num_examples": 720,
+  "jurisdictions": 12,
+  "languages": 9,
+  "parser_version": "world-legal-final-choice-v1.3",
+  "files": {
+    "data/test.jsonl": "ccf7e36eeca9a24c3a0fb37b954bf59af18109729d0d8ec80484500747c52270",
+    "annotations/sources.jsonl": "4cbd2b0777b804e36ae3e974cce8fe0f7d1782e9be60537a049306662a29e564",
+    "annotations/answers.jsonl": "bbcf34560e3fe169520d7b4791a95deb5d9e20a8a238805a505c0ac9e9a30874",
+    "annotations/jurisdictions.json": "f0b8975c8a5a2bec45ac5e76745a74d873a7288117eda0862d941d2f1f059869",
+    "provenance/selection.jsonl": "69939548b9593a4b43599adad5ef3773b682c1993d191ea419730a5b5b46dbac",
+    "provenance/reviews.jsonl": "e353e3ec6b19f0685d23e259d43fcf3cd774fad5efb0bd854a0ab1c3e8c324ed",
+    "provenance/reference_selection.json": "31c7b7bb86ec0076e15ca6add1c458a06c1dd610c9ef50975aa3bb0336d55996",
+    "provenance/release.json": "d1e4b95acd57c7fbd035c786dee20a64e8464ac16f4ccb496efb65b3fe01b8d9",
+    "evaluation/parser.py": "83212a8c31c976e8fd79cf39ad3cbfe83622385e969b81820a7fac2310e71b36",
+    "evaluation/output.py": "37723f58b4d1b1d4ef590f0feb83c12704fe710624438d5cdab9aafd9b374758",
+    "evaluation/metrics.py": "5d43122ca88a50dd8bdd96492e8eb03b2ba3f60efba3520c9781319edc99bce6",
+    "evaluation/records.py": "1db5c6251c196b22ae75fd080bfe8d11b927b5fba828a56aaecfa75ff859a22b",
+    "evaluation/__init__.py": "642a29c87b847c3a3a927527cd834cb08a2a097f5fd2463d7455ec1e0464c067",
+    "evaluate.py": "adda03fac4e0e0d61c7334cb0ede76f587d510ad88e0ed8156cce0188bb64fa2"
+  }
+}

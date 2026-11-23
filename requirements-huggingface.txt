@@ -1,0 +1,6 @@
+# Optional tooling for local HF loading checks and figure regeneration.
+# The core evaluator requires only the Python standard library.
+datasets>=3.0
+huggingface_hub>=0.30
+PyYAML>=6.0
+matplotlib>=3.8

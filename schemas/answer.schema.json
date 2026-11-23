@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "World Legal Bench answer key",
+  "required": [
+    "id",
+    "answer",
+    "answer_text",
+    "option_rationales"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "answer": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "answer_text": {
+      "type": "string"
+    },
+    "option_rationales": {
+      "type": "object",
+      "required": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "properties": {
+        "A": {
+          "type": "string"
+        },
+        "B": {
+          "type": "string"
+        },
+        "C": {
+          "type": "string"
+        },
+        "D": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "World Legal Bench prediction",
+  "required": [
+    "id",
+    "prediction"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prediction": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "error"
+      ]
+    },
+    "model": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
