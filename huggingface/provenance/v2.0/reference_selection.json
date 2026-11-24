@@ -1,0 +1,112 @@
+{
+  "version": "2.0",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "max",
+  "status": "retrospective_selection_profile_not_independent_evaluation",
+  "total": 360,
+  "correct": 33,
+  "incorrect": 301,
+  "invalid_output": 26,
+  "nonpassing": 327,
+  "accuracy": 9.166666666666666,
+  "region_macro_accuracy": 9.127202294483556,
+  "by_region": [
+    {
+      "region": "Americas",
+      "total": 84,
+      "correct": 7,
+      "nonpassing": 77,
+      "accuracy": 8.333333333333334
+    },
+    {
+      "region": "Asia",
+      "total": 157,
+      "correct": 15,
+      "nonpassing": 142,
+      "accuracy": 9.554140127388536
+    },
+    {
+      "region": "Europe",
+      "total": 45,
+      "correct": 4,
+      "nonpassing": 41,
+      "accuracy": 8.88888888888889
+    },
+    {
+      "region": "Africa",
+      "total": 38,
+      "correct": 4,
+      "nonpassing": 34,
+      "accuracy": 10.526315789473685
+    },
+    {
+      "region": "Oceania",
+      "total": 36,
+      "correct": 3,
+      "nonpassing": 33,
+      "accuracy": 8.333333333333334
+    }
+  ],
+  "by_country": {
+    "US": {
+      "correct": 2,
+      "nonpassing": 21,
+      "total": 23
+    },
+    "CA": {
+      "correct": 4,
+      "nonpassing": 38,
+      "total": 42
+    },
+    "AU": {
+      "correct": 3,
+      "nonpassing": 33,
+      "total": 36
+    },
+    "KR": {
+      "correct": 6,
+      "nonpassing": 56,
+      "total": 62
+    },
+    "FR": {
+      "correct": 4,
+      "nonpassing": 41,
+      "total": 45
+    },
+    "BR": {
+      "correct": 0,
+      "nonpassing": 4,
+      "total": 4
+    },
+    "MX": {
+      "correct": 1,
+      "nonpassing": 14,
+      "total": 15
+    },
+    "CN": {
+      "correct": 1,
+      "nonpassing": 10,
+      "total": 11
+    },
+    "JP": {
+      "correct": 5,
+      "nonpassing": 53,
+      "total": 58
+    },
+    "IN": {
+      "correct": 1,
+      "nonpassing": 8,
+      "total": 9
+    },
+    "ZA": {
+      "correct": 4,
+      "nonpassing": 34,
+      "total": 38
+    },
+    "ID": {
+      "correct": 2,
+      "nonpassing": 15,
+      "total": 17
+    }
+  }
+}

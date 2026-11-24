@@ -25,7 +25,7 @@ def main(argv=None):
             if not path.is_relative_to(ROOT) or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
                 raise ValueError(f'release file digest mismatch: {name}')
         rows = read_jsonl(ROOT / 'data/test.jsonl')
-        questions = [{'id': r['question_id'], 'country': r['country']} for r in rows]
+        questions = [{'id': r['question_id'], 'country': r['country'], 'region': r['region']} for r in rows]
         answers = [{'id': r['question_id'], 'answer': r['answer']} for r in rows]
         report = score(questions, answers, read_jsonl(args.predictions), allow_partial=args.allow_partial)
         report['dataset_version'] = manifest['version']

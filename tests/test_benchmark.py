@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from world_legal_bench.dataset import load_questions, load_answers, messages_for, read_jsonl, validate_release
 from world_legal_bench.metrics import score
 from world_legal_bench.parser import extract_final_choice
+from grade_helpers import prediction as fixture_prediction
 
 
 class ReleaseTest(unittest.TestCase):
@@ -23,7 +24,7 @@ class ReleaseTest(unittest.TestCase):
 
     def test_frozen_release(self):
         report = validate_release(ROOT)
-        self.assertEqual((report["cases"], report["jurisdictions"], report["languages"]), (720, 12, 9))
+        self.assertEqual((report["cases"], report["jurisdictions"], report["languages"]), (360, 12, 9))
 
     def test_prompt_export_only_uses_question_and_options(self):
         q = self.questions[0]
@@ -36,7 +37,7 @@ class ReleaseTest(unittest.TestCase):
             self.assertIn(f"{label}. {value}", messages[1]["content"])
 
     def test_gold_smoke_test_and_equal_country_weight(self):
-        preds = [{"id": a["id"], "prediction": a["answer"]} for a in self.answers]
+        preds = [fixture_prediction(a["id"], a["answer"]) for a in self.answers]
         result = score(self.questions, self.answers, preds)
         self.assertEqual(result["accuracy"], 100)
         self.assertEqual(result["macro_accuracy"], 100)
@@ -44,16 +45,16 @@ class ReleaseTest(unittest.TestCase):
         self.assertTrue(result["complete"])
 
     def test_reference_selection_profile_is_reproducible_without_model_calls(self):
-        selected = read_jsonl(ROOT / "provenance/selection.jsonl")
+        selected = read_jsonl(ROOT / "provenance/v2.0/selection.jsonl")
         result = score(self.questions, self.answers,
-                       [{"id": r["id"], "prediction": r["reference_choice"]} for r in selected])
-        self.assertEqual((result["correct"], result["incorrect"], result["invalid"]), (128, 592, 0))
-        self.assertAlmostEqual(result["accuracy"], 100 * 128 / 720)
-        self.assertAlmostEqual(result["macro_accuracy"], result["accuracy"])
+                       [fixture_prediction(r["id"], r["reference_choice"], r["reference_outcome"]) for r in selected])
+        self.assertEqual((result["correct"], result["incorrect"], result["invalid"]), (33, 301, 26))
+        self.assertAlmostEqual(result["accuracy"], 100 * 33 / 360)
+        self.assertAlmostEqual(result["region_macro_accuracy"], 9.127202294483556)
 
     def test_partial_scores_withhold_full_benchmark_metrics(self):
-        one = [{"id": self.answers[0]["id"], "prediction": self.answers[0]["answer"]}]
-        with self.assertRaisesRegex(ValueError, "missing 719"):
+        one = [fixture_prediction(self.answers[0]["id"], self.answers[0]["answer"])]
+        with self.assertRaisesRegex(ValueError, "missing 359"):
             score(self.questions, self.answers, one)
         result = score(self.questions, self.answers, one, allow_partial=True)
         self.assertFalse(result["complete"])
@@ -62,12 +63,12 @@ class ReleaseTest(unittest.TestCase):
         self.assertIsNone(result["worst_country_accuracy"])
 
     def test_invalid_and_inference_errors_stay_in_denominator(self):
-        preds = [{"id": a["id"], "prediction": a["answer"]} for a in self.answers]
-        preds[0]["prediction"] = "A or B"
+        preds = [fixture_prediction(a["id"], a["answer"]) for a in self.answers]
+        preds[0] = fixture_prediction(preds[0]["id"], None, "invalid_output")
         preds[1]["status"] = "error"
         result = score(self.questions, self.answers, preds)
-        self.assertEqual((result["correct"], result["invalid"], result["inference_errors"]), (718, 2, 1))
-        self.assertAlmostEqual(result["accuracy"], 100 * 718 / 720)
+        self.assertEqual((result["correct"], result["invalid"], result["inference_errors"]), (358, 2, 1))
+        self.assertAlmostEqual(result["accuracy"], 100 * 358 / 360)
 
     def test_duplicate_unknown_and_nonstring_predictions_fail(self):
         a = self.answers[0]
@@ -83,7 +84,7 @@ class ReleaseTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             for folder in ("data", "provenance"):
                 shutil.copytree(ROOT / folder, Path(tmp) / folder)
-            path = Path(tmp) / "data/v1.4.1-release/answers.jsonl"
+            path = Path(tmp) / "data/v2.0/answers.jsonl"
             path.write_bytes(path.read_bytes() + b"\n")
             with self.assertRaisesRegex(ValueError, "SHA-256 mismatch"):
                 validate_release(tmp)

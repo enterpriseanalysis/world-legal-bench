@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-label="360 items grouped into Americas 84, Asia 157, Europe 45, Africa 38 and Oceania 36">
+<rect width="1200" height="440" fill="#fff"/>
+<g font-family="Arial, sans-serif" fill="#173246">
+<text x="36" y="48" font-size="27" font-weight="700">World Legal Bench 2.0: geographic coverage</text>
+<text x="36" y="80" font-size="17" fill="#5d7185">360 questions · 12 jurisdictions · 9 languages · 5 reporting regions</text>
+<rect x="36" y="110" width="208" height="260" rx="10" fill="#26899a" fill-opacity="0.07"/>
+<rect x="94" y="215.31847133757964" width="92" height="109.68152866242038" rx="4" fill="#26899a"/>
+<text x="140" y="203.31847133757964" text-anchor="middle" font-size="23" font-weight="700">84</text>
+<text x="140" y="351" text-anchor="middle" font-size="18">Americas</text>
+<rect x="268" y="110" width="208" height="260" rx="10" fill="#6b63b6" fill-opacity="0.07"/>
+<rect x="326" y="120.0" width="92" height="205.0" rx="4" fill="#6b63b6"/>
+<text x="372" y="108.0" text-anchor="middle" font-size="23" font-weight="700">157</text>
+<text x="372" y="351" text-anchor="middle" font-size="18">Asia</text>
+<rect x="500" y="110" width="208" height="260" rx="10" fill="#d79b43" fill-opacity="0.07"/>
+<rect x="558" y="266.2420382165605" width="92" height="58.75796178343949" rx="4" fill="#d79b43"/>
+<text x="604" y="254.2420382165605" text-anchor="middle" font-size="23" font-weight="700">45</text>
+<text x="604" y="351" text-anchor="middle" font-size="18">Europe</text>
+<rect x="732" y="110" width="208" height="260" rx="10" fill="#34836c" fill-opacity="0.07"/>
+<rect x="790" y="275.38216560509557" width="92" height="49.617834394904456" rx="4" fill="#34836c"/>
+<text x="836" y="263.38216560509557" text-anchor="middle" font-size="23" font-weight="700">38</text>
+<text x="836" y="351" text-anchor="middle" font-size="18">Africa</text>
+<rect x="964" y="110" width="208" height="260" rx="10" fill="#607b98" fill-opacity="0.07"/>
+<rect x="1022" y="277.9936305732484" width="92" height="47.00636942675159" rx="4" fill="#607b98"/>
+<text x="1068" y="265.9936305732484" text-anchor="middle" font-size="23" font-weight="700">36</text>
+<text x="1068" y="351" text-anchor="middle" font-size="18">Oceania</text>
+<text x="36" y="410" font-size="15" fill="#5d7185">Geographic grouping references UNSD M49. Counts describe the included jurisdictions only.</text>
+</g></svg>

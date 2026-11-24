@@ -1,155 +1,82 @@
-<p align="center"><img src="assets/hero-research-v2.png" alt="World Legal Bench: native-language legal reasoning across twelve jurisdictions" width="100%"></p>
+# World Legal Bench 2.0
 
-# World Legal Bench
+### Source-linked legal reasoning across twelve jurisdictions and five geographic reporting regions
 
-### Native-language legal reasoning across twelve jurisdictions
+**World Legal Bench evaluates how language models apply jurisdiction-specific legal rules in the selected language of each legal system.** Its questions test institutional authority, procedural conditions, statutory exceptions, and the legal consequences of changing a material fact.
 
-**World Legal Bench evaluates whether a language model can apply the legal rules of a particular jurisdiction, in that jurisdiction's selected test language.** Its questions require models to distinguish institutional powers, combine provisions, resolve procedural conditions, and identify the legal consequences of a changed fact.
+Version **2.0** contains **360 closed-book multiple-choice questions** across **12 jurisdictions**, **9 languages**, and **5 geographic reporting regions**. Each item retains its original question, four choices, reference answer and official-source references from the parent candidate pool. Every response is graded by an explicitly configured LLM Judge.
 
-The **v1.4.1-release** contains **720 source-linked multiple-choice questions**, with **60 questions per jurisdiction** across **9 languages**. It covers constitutional and public law, including administrative procedure, parliamentary rules, judicial remedies, public accountability, and access to information. Each item has four choices, one reference answer, option-level rationales, and official-source references.
+[Methodology](docs/methodology.md) · [Evaluation protocol](docs/evaluation.md) · [Dataset card](docs/dataset_card.md) · [Hugging Face card](huggingface/README.md) · [Results and reporting](docs/results.md)
 
-[Hugging Face card](huggingface/README.md) · [Dataset card](docs/dataset_card.md) · [Methodology](docs/methodology.md) · [Evaluation protocol](docs/evaluation.md) · [Data format](docs/data_format.md)
+## Geographic coverage and reporting
 
-## A jurisdiction-level view of legal capability
+The reporting groups reference the **United Nations Statistics Division M49 geographic classification**: Americas, Asia, Europe, Africa and Oceania. Jurisdictions remain the legal unit of evaluation; geographic regions provide a compact view of the selected jurisdictions. M49 is a statistical grouping convention, not a claim of political affiliation, United Nations endorsement, or representative coverage of every legal system in a region. [UNSD M49](https://unstats.un.org/unsd/methodology/m49/)
 
-A single aggregate score can conceal substantial differences between jurisdictions. World Legal Bench reports a country-balanced overall score alongside each jurisdiction's accuracy, the lowest jurisdiction score, and the gap between the highest and lowest scores.
+| Reporting region | Included jurisdictions | Items | Share |
+|---|---|---:|---:|
+| Americas | United States, Canada, Brazil, Mexico | 84 | 23.33% |
+| Asia | South Korea, China, Japan, India, Indonesia | 157 | 43.61% |
+| Europe | France | 45 | 12.50% |
+| Africa | South Africa | 38 | 10.56% |
+| Oceania | Australia | 36 | 10.00% |
+| **Total** | **12 jurisdictions** | **360** | **100%** |
 
-The benchmark measures the joint demands of legal knowledge, language understanding, and application of the question's stated legal assumptions. These factors vary together in this release; country scores do not isolate the effect of language or establish a causal measure of fairness.
+![World Legal Bench 2.0 regional item distribution](assets/regional-coverage-v20.svg)
 
-The release is a **difficulty-selected evaluation set**. Questions were selected using existing `qwen3.8-flash` responses, then subjected to an AI-assisted source and answer quick check. Selection concentrated on substantive answer mismatches, with correct items filling jurisdictions that had fewer eligible mistakes. This makes the set useful for targeted legal evaluation while introducing an explicit reference-model selection bias. The complete selection profile is available in [methodology](docs/methodology.md).
+Item counts are intentionally unequal. The release preserves observed nonpassing cases rather than discarding them to enforce geographic quotas. The [methodology](docs/methodology.md) defines both item-level overall accuracy and an equal-region macro average so that the largest item group does not determine the only headline result.
 
-## Coverage
+## A difficulty-selected challenge set
 
-| Jurisdiction | Code | Test language | Questions |
-|---|---|---|---:|
-| United States | US | English | 60 |
-| Canada | CA | French | 60 |
-| Australia | AU | English | 60 |
-| South Korea | KR | Korean | 60 |
-| France | FR | French | 60 |
-| Brazil | BR | Portuguese | 60 |
-| Mexico | MX | Spanish | 60 |
-| China | CN | Simplified Chinese | 60 |
-| Japan | JP | Japanese | 60 |
-| India | IN | Hindi | 60 |
-| South Africa | ZA | English | 60 |
-| Indonesia | ID | Indonesian | 60 |
+Selection used saved `gpt-6-luna` responses at `max` reasoning effort on the 10,132-item v1.4.2 candidate pool. The release retains **327 scored nonpasses** and adds **33 recorded successes** to supplement legal-topic coverage. Of the nonpasses, **301 were graded incorrect and 26 were graded as invalid final answers**. Execution failures, unscored cases and empty returns did not enter the selection.
 
-![Jurisdictions grouped by test language, with 60 questions per jurisdiction](assets/coverage-matrix-v2.png)
+The selected historical responses yield **9.17% item-level accuracy** and **9.13% region-macro accuracy**. These are **retrospective selection statistics**, not a fresh model run or an unbiased estimate of legal ability. The same model may answer differently on rerun, and other models may solve the retained cases. The [selection records](provenance/v2.0/selection.jsonl) and [reference profile](provenance/v2.0/reference_selection.json) expose this design choice.
 
-These are the selected languages of the benchmark, not an exhaustive list of the languages used in each legal system. Items are independently authored jurisdiction-specific questions, rather than parallel translations of the same questions.
+Version 2.0 does not claim independently verified legal correctness or expert certification. This release checks item identity, source binding, recorded grading status, quotas and duplicates; it does not add a new legal expert audit.
 
-## Quick start
+## Run and evaluate
 
-Python 3.10 or later is required. Evaluation and validation use the Python standard library; no model API is needed to inspect the dataset or score saved responses.
+Python 3.10 or later is required. Model access is explicit and opt-in.
 
 ```bash
-cd world-legal-bench
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
 python -m pip install -e .
 wlb validate
-```
-
-Export model-ready messages. The export contains the question and its four choices; answer keys, rationales, and source materials are excluded from model messages.
-
-```bash
 wlb export-prompts --output outputs/prompts.jsonl
 ```
 
-Evaluate with your own inference stack, then save one prediction per question:
-
-```json
-{"id":"WLB14-US-J0003-001","prediction":"D"}
-```
-
-Score the complete run:
-
-```bash
-wlb score --predictions outputs/predictions.jsonl --output outputs/report.json
-```
-
-The report includes coverage, invalid-output counts, overall accuracy, per-jurisdiction accuracy, and case-level decisions. Duplicate IDs, unknown IDs, and incomplete official submissions are rejected. A [three-record example](examples/predictions.example.jsonl) can be scored with `--allow-partial` for debugging; incomplete reports withhold the country-macro score.
-
-### Optional API runner
-
-An opt-in runner supports OpenAI-compatible Chat Completions endpoints. It makes one single-turn request per question, apart from bounded transport retries. It has no browsing, retrieval, or agent loop.
+To collect answers from an OpenAI-compatible Chat Completions endpoint:
 
 ```bash
 export OPENAI_API_KEY="your-key"
-export OPENAI_BASE_URL="https://your-provider.example/v1"
-wlb run --model your-model-id --output outputs/predictions.jsonl \
-  --workers 4 --qpm 60 --max-tokens 131072 --temperature 0
+wlb run --base-url https://your-provider.example/v1 --model YOUR_MODEL \
+  --output outputs/predictions.jsonl --workers 4 --qpm 60 --max-tokens 131072
 ```
 
-The output is append-only during a run. `--resume` reuses completed records and requires the same recorded configuration. API credentials are read from the environment and are not written to run metadata. Reasoning settings can be supplied explicitly with `--extra-body`; provider support varies. See [evaluation](docs/evaluation.md) for the full contract and failure accounting.
-
-## Evaluation contract
-
-| Property | Definition |
-|---|---|
-| Condition | Closed book; question and choices only |
-| Interaction | Single turn, one question per request |
-| Answer space | One uppercase letter: A, B, C, or D |
-| Scoring | Exact comparison after deterministic final-answer extraction |
-| Primary aggregate | Unweighted mean of the 12 jurisdiction accuracies |
-| Missing predictions | Rejected for complete runs |
-| Invalid or empty responses | Count as unsuccessful; reported separately |
-| Legal scope | The legal text, version, and assumptions stated in each item |
-
-![Closed-book single-turn evaluation and deterministic scoring](assets/evaluation-flow-v2.png)
-
-The parser recognizes explicit final answers in the test languages, handles common Markdown formatting, and selects the segment after a closing `</think>` marker when present. It rejects conflicting or multiple declared options. It also distinguishes the Portuguese article “A” from option A. The implementation is [versioned](src/world_legal_bench/parser.py) and covered by behavioral tests.
-
-## Data and reproducibility
-
-```text
-data/
-  jurisdictions.json
-  v1.4.1-release/
-    questions.jsonl       # Model-visible item data
-    answers.jsonl         # Reference answers and option rationales
-    sources.jsonl         # Official URLs, locators, edition labels, digests
-    manifest.json         # Release identity and SHA-256 checksums
-provenance/
-  selection.jsonl         # Reference-model selection decisions
-  reviews.jsonl           # Item-level AI-assisted quick-check records
-  reference_selection.json
-  release.json
-src/world_legal_bench/     # Standalone runner, parser, and scorer
-```
-
-The standalone export preserves all question wording, option labels, and reference answers from the frozen release. Internal platform endpoints, task identifiers, model transcripts, and credentials are excluded. Official legal texts are referenced rather than redistributed in bulk. Some edition labels name authoring snapshots; a source URL can subsequently serve a different revision. See [reproducibility](docs/reproducibility.md) for the scope of the checksums and the limits of source recovery.
-
-Run the release and evaluator checks locally:
+Grade saved answers, then aggregate the validated Judge decisions:
 
 ```bash
-python scripts/check_release.py
-python -m unittest discover -s tests -v
+wlb judge --base-url https://your-judge-provider.example/v1 --model YOUR_JUDGE \
+  --predictions outputs/predictions.jsonl --output outputs/judged.jsonl
+wlb score --predictions outputs/judged.jsonl --output outputs/report.json
 ```
 
-A [CI workflow](.github/workflows/validate.yml) contains the same checks for future repository hosting. No hosted CI status or independently reproduced model leaderboard is claimed by this local release.
+Gold answers are supplied only to the Judge, never to the model being tested. The Judge accepts multilingual choice declarations and unambiguous semantic equivalents. It records a choice, outcome, candidate evidence and explanation. Malformed or inconsistent Judge decisions remain execution errors; they are not silently converted to substantive wrong answers. See the [evaluation protocol](docs/evaluation.md) for reporting requirements.
 
-## Results and responsible interpretation
+## Repository layout
 
-The repository includes a **retrospective selection profile**, not a new benchmark run: the selected reference responses contain 128 correct and 592 incorrect answers, corresponding to 17.78% accuracy. These responses helped determine which questions entered the set. The figure is consequently conditional on selection and must not be presented as an unbiased estimate of the model's general legal ability. Rerunning the model can produce different results.
+| Path | Contents |
+|---|---|
+| `data/v2.0/` | Current questions, answers, sources, jurisdiction quotas and integrity manifest |
+| `provenance/v2.0/` | Selection decisions, parent identity and retrospective reference profile |
+| `src/world_legal_bench/` | Prompt export, optional inference/Judge clients and score aggregation |
+| `huggingface/` | Self-contained dataset card, viewer data and offline grade aggregator |
+| `data/v1.4.1-release/` | Preserved earlier release; not the current evaluation set |
 
-Public reporting should identify the dataset version, model identifier, reasoning settings, output-token budget, parser version, and coverage. Comparisons should use the same item set and protocol. The [results guide](docs/results.md) provides a reporting template. This release does not claim to reproduce an external general-intelligence ranking.
+## Interpretation and versioning
 
-Items were AI-assisted in authoring and received an AI-assisted selected-item source quick check. They have not undergone independent legal-expert review. The benchmark is an evaluation artifact and is not legal advice. Item corrections should include the question ID and the official legal text supporting the correction; see [contributing](CONTRIBUTING.md).
+Report the exact dataset version, tested model, Judge model, reasoning settings, generation limits and full item coverage. Publish regional and jurisdiction-level breakdowns alongside both overall scores. Geographic groups summarize only the included jurisdictions, and small groups can have substantial score uncertainty.
+
+Version 2.0 changes the selected items, weighting and grading protocol. Its scores are not directly comparable to v1.4.1-release. This is an error-selected challenge set, not a random sample of legal questions, a population-representative measure, or a proxy calibrated to an external general-intelligence ranking.
 
 ## License and citation
 
-Code is provided under the [MIT license](LICENSE). Original benchmark questions, annotations, and documentation are provided under [CC BY 4.0](LICENSE-DATA). Referenced laws, judgments, and other third-party material retain their own status; this repository does not relicense them. See [NOTICE](NOTICE).
-
-```bibtex
-@misc{worldlegalbench2026,
-  title  = {World Legal Bench: Native-Language Legal Reasoning Across Twelve Jurisdictions},
-  author = {{World Legal Bench contributors}},
-  year   = {2026},
-  note   = {Dataset version 1.4.1-release}
-}
-```
-
-Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
+Code is available under [MIT](LICENSE). Authored questions and documentation use [CC BY 4.0](LICENSE-DATA); underlying legal source materials retain their own terms. See [NOTICE](NOTICE), [CITATION.cff](CITATION.cff) and [CONTRIBUTING.md](CONTRIBUTING.md).

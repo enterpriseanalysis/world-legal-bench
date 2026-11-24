@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "Please cite this dataset version when reporting results."
 type: dataset
 title: "World Legal Bench: Native-Language Legal Reasoning Across Twelve Jurisdictions"
-version: "1.4.1-release"
-date-released: 2026-11-23
+version: "2.0"
+date-released: 2026-11-24
 authors:
   - name: "World Legal Bench contributors"
 license: CC-BY-4.0

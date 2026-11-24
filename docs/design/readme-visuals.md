@@ -1,3 +1,10 @@
+# README visuals
+
+The current v2.0 README uses `assets/regional-coverage-v20.svg`, a deterministic diagram
+of the five region counts in `provenance/v2.0/reference_selection.json`. It makes no geographic
+boundary or model-performance claim. The previous assets below are retained as historical
+v1.4.1-release artwork and are not embedded in the v2.0 homepage.
+
 # README visual assets
 
 The README uses a white research-publication treatment, aligned with the structure of a Hugging Face dataset card. The artwork provides identity; the coverage and protocol figures carry inspectable claims about the release.

@@ -1,30 +1,9 @@
 # Reproducibility
 
-## Frozen evaluation artifacts
+Run `wlb validate` or `python scripts/check_release.py` to verify the current data manifest, quota map, unique item identities and source/gold alignment. These checks do not call models or constitute a legal expert audit.
 
-The released question text, option order, and answer labels define the test. The standalone file layout separates public questions from answer keys without changing those fields. [release.json](../provenance/release.json) identifies the original release digest and field mapping.
+Preserve immutable prediction and Judge-output files with run configuration. `wlb score` reproduces aggregate arithmetic from those saved grades without contacting a provider. Report both item-micro and region-macro accuracy and use the same grouping and retry policy across compared models.
 
-The [manifest](../data/v1.4.1-release/manifest.json) hashes all data and provenance files used to identify the frozen dataset. Validation checks those bytes before checking semantic relationships such as answer/choice alignment and complete per-country coverage. A checksum detects a change; it does not prove a legal answer is correct.
+The current data manifest and `provenance/v2.0/release.json` identify the parent pool. The release-selection builder accepts explicit private platform snapshots and a pinned parent bundle, verifies identities, and emits public selection metadata. Private provider transcripts are not included, so public users can reproduce the released selection arithmetic but cannot independently reconstruct the original Judge's semantic decisions from those metadata alone.
 
-```bash
-python scripts/check_release.py
-python -m unittest discover -s tests -v
-```
-
-## Legal source recovery
-
-Official URLs, provision locators, edition labels, and available source digests are bundled. Full legal source archives are not. Some edition labels name authoring snapshots; official URLs can later point to updated texts. Consequently, the exact source bytes cannot always be recovered from this distribution alone.
-
-When independently checking an item, use its stated legal version and assumptions, locate the provision in an official archive, and record the source edition. A current consolidated text should not silently replace the item's specified version. If the specified version cannot be established, report that uncertainty with the question ID.
-
-## Reference response recovery
-
-Reference choices and outcomes are distributed in selection provenance. The original provider responses, operational task metadata, and reasoning transcripts are not. The retrospective profile can be recomputed from the choices; independent re-extraction from original transcripts is outside this distribution.
-
-A new model run is a separate observation. Preserve its raw final responses and configuration, then score with the same parser. Do not overwrite historical results when evaluating a revised parser or answer key.
-
-## Version boundaries
-
-The package version is `1.4.1`; the exact dataset label is `1.4.1-release`. Record the dataset label with every result. Data files should be treated as immutable. A correction to wording, legal assumptions, source interpretation, or answer labels requires a new dataset revision and an explicit correction record.
-
-Parser changes are also versioned. An alternative extractor can be useful for error analysis, but its results should be labeled with the new parser identity. Scores obtained with different extractors should not be silently mixed.
+The archived `data/v1.4.1-release/` files and their original provenance remain unchanged. Use the corresponding historical code version to reproduce the archived grading protocol.

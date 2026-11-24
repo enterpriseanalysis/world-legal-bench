@@ -87,12 +87,12 @@ def validate_release(root):
     questions = unique_by_id(load_questions(root), "questions")
     answers = unique_by_id(load_answers(root), "answers")
     sources = unique_by_id(read_jsonl(folder / "sources.jsonl"), "sources")
-    jurisdictions = read_json(root / "data/jurisdictions.json")
+    jurisdictions = read_json(root / manifest.get("jurisdictions_file", "data/jurisdictions.json"))
     countries = {row["code"]: row for row in jurisdictions}
     if len(countries) != 12 or len(jurisdictions) != 12:
         raise ValueError("expected twelve unique jurisdictions")
-    if len(questions) != 720 or set(answers) != set(questions):
-        raise ValueError("expected 720 aligned question and answer ids")
+    if len(questions) != manifest["case_count"] or set(answers) != set(questions):
+        raise ValueError("expected aligned question and answer ids matching the manifest")
     counts = {country: 0 for country in countries}
     signatures = set()
     for qid, question in questions.items():
@@ -110,7 +110,7 @@ def validate_release(root):
         answer = answers[qid]
         if answer["answer"] not in choices or choices[answer["answer"]] != answer["answer_text"]:
             raise ValueError(f"gold/choice mismatch: {qid}")
-        if set(answer["option_rationales"]) != set("ABCD"):
+        if ("option_rationales" in answer and set(answer["option_rationales"]) != set("ABCD")) or not (answer.get("option_rationales") or answer.get("statement_reviews")):
             raise ValueError(f"missing option rationale: {qid}")
         if not question["source_ids"] or any(s not in sources for s in question["source_ids"]):
             raise ValueError(f"missing source reference: {qid}")
@@ -120,24 +120,33 @@ def validate_release(root):
         if signature in signatures:
             raise ValueError(f"duplicate question: {qid}")
         signatures.add(signature)
-    if any(n != 60 for n in counts.values()):
-        raise ValueError(f"expected 60 cases per jurisdiction: {counts}")
-    reviews = unique_by_id(read_jsonl(root / "provenance/reviews.jsonl"), "reviews")
-    selected = unique_by_id(read_jsonl(root / "provenance/selection.jsonl"), "selection")
-    if set(reviews) != set(questions) or set(selected) != set(questions):
-        raise ValueError("incomplete review/selection coverage")
-    correct = 0
+    expected_counts = manifest.get("country_counts", {country: 60 for country in countries})
+    if counts != expected_counts:
+        raise ValueError(f"country quota mismatch: {counts}")
+    provenance = root / manifest.get("provenance_dir", "provenance")
+    selected = unique_by_id(read_jsonl(provenance / "selection.jsonl"), "selection")
+    if set(selected) != set(questions):
+        raise ValueError("incomplete selection coverage")
+    profile = read_json(provenance / "reference_selection.json")
+    actual = {"correct": 0, "incorrect": 0, "invalid_output": 0}
     for qid, item in selected.items():
-        if reviews[qid]["verdict"] != "pass" or not reviews[qid]["note"].strip():
-            raise ValueError(f"unreviewed selected item: {qid}")
-        if item["answer"] != answers[qid]["answer"] or item["reference_choice"] not in "ABCD":
+        if item["answer"] != answers[qid]["answer"]:
             raise ValueError(f"selection/gold mismatch: {qid}")
-        expected = "correct" if item["reference_choice"] == item["answer"] else "incorrect"
-        if item["reference_outcome"] != expected:
-            raise ValueError(f"selection outcome mismatch: {qid}")
-        correct += expected == "correct"
-    if correct != 128:
-        raise ValueError("reference selection profile differs from the frozen release")
+        outcome = item["reference_outcome"]
+        if outcome not in actual:
+            raise ValueError(f"unsupported selection outcome: {qid}")
+        choice = item["reference_choice"]
+        if outcome != "invalid_output":
+            expected = "correct" if choice == item["answer"] else "incorrect"
+            if choice not in "ABCD" or expected != outcome:
+                raise ValueError(f"selection outcome mismatch: {qid}")
+        actual[outcome] += 1
+    if manifest["version"] == "2.0":
+        if actual != {key: profile[key] for key in actual}:
+            raise ValueError("reference profile differs from selected outcomes")
+        from .geography import COUNTRY_REGION
+        if any(q.get("region") != COUNTRY_REGION[q["country"]] for q in questions.values()):
+            raise ValueError("region assignment mismatch")
     return {"version": DATASET_VERSION, "cases": len(questions), "jurisdictions": len(counts),
             "languages": len({q["language"] for q in questions.values()}), "by_country": counts,
             "verified_files": len(manifest["files"])}

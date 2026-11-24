@@ -23,6 +23,14 @@ def main(argv=None):
     scoring.add_argument("--predictions", required=True, type=Path)
     scoring.add_argument("--output", type=Path)
     scoring.add_argument("--allow-partial", action="store_true", help="debug only; macro score is withheld")
+    judging = sub.add_parser("judge", help="grade saved predictions with an explicitly configured LLM")
+    judging.add_argument("--predictions", required=True, type=Path)
+    judging.add_argument("--output", required=True, type=Path)
+    judging.add_argument("--base-url", required=True)
+    judging.add_argument("--model", required=True)
+    judging.add_argument("--workers", type=int, default=4)
+    judging.add_argument("--qpm", type=float, default=60)
+    judging.add_argument("--max-tokens", type=int, default=131072)
     running = sub.add_parser("run", help="send requests to an explicitly configured endpoint")
     running.add_argument("--base-url", default=os.environ.get("OPENAI_BASE_URL"))
     running.add_argument("--model", required=True)
@@ -58,6 +66,12 @@ def main(argv=None):
                 args.output.parent.mkdir(parents=True, exist_ok=True)
                 args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             result = {k: value for k, value in result.items() if k != "cases"}
+        elif args.command == "judge":
+            validate_release(args.root)
+            from .judge import judge_predictions
+            result = judge_predictions(load_questions(args.root), load_answers(args.root),
+                read_jsonl(args.predictions), output=args.output, base_url=args.base_url,
+                model=args.model, workers=args.workers, qpm=args.qpm, max_tokens=args.max_tokens)
         else:
             if not args.base_url:
                 raise ValueError("set --base-url or OPENAI_BASE_URL")

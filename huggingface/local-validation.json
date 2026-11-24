@@ -3,9 +3,10 @@
   "hosted_viewer_verified": false,
   "networking_disabled": true,
   "split": "test",
-  "rows": 720,
+  "rows": 360,
   "columns": [
     "country",
+    "region",
     "language",
     "question_id",
     "question",
@@ -16,19 +17,19 @@
     "source_urls"
   ],
   "country_counts": {
-    "US": 60,
-    "CA": 60,
-    "AU": 60,
-    "KR": 60,
-    "FR": 60,
-    "BR": 60,
-    "MX": 60,
-    "CN": 60,
-    "JP": 60,
-    "IN": 60,
-    "ZA": 60,
-    "ID": 60
+    "US": 23,
+    "CA": 42,
+    "AU": 36,
+    "KR": 62,
+    "FR": 45,
+    "BR": 4,
+    "MX": 15,
+    "CN": 11,
+    "JP": 58,
+    "IN": 9,
+    "ZA": 38,
+    "ID": 17
   },
-  "datasets_version": "5.2.0",
-  "huggingface_hub_version": "2.4.0"
+  "datasets_version": "3.6.0",
+  "huggingface_hub_version": "1.12.2"
 }

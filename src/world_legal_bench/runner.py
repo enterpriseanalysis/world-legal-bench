@@ -62,8 +62,8 @@ def _contains_credentials(value):
 
 
 def request_case(question, *, url, api_key, model, max_tokens, temperature,
-                 timeout, retries, limiter, extra_body):
-    payload = {"model": model, "messages": messages_for(question),
+                 timeout, retries, limiter, extra_body, messages=None):
+    payload = {"model": model, "messages": messages if messages is not None else messages_for(question),
                "temperature": temperature, "max_tokens": max_tokens}
     payload.update(extra_body)
     headers = {"Content-Type": "application/json"}

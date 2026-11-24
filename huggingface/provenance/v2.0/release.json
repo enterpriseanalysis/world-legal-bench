@@ -1,0 +1,10 @@
+{
+  "version": "2.0",
+  "release_id": "world-legal-bench-v2-0-3184ad5f8cd6",
+  "parent_version": "1.4.2",
+  "parent_sha256": "6963b17c7124f034b2c614140eb193927c0dcd4b2b8516a6d5e59fa4a38c7282",
+  "date": "2026-11-24",
+  "selection_policy": "Retain all 327 scored nonpasses, including 26 invalid final answers; add 33 coverage fills from recorded successes. Exclude execution failures, unscored and empty responses.",
+  "review_scope": "Identity, source binding, score status, counts and duplicate checks only; no new legal expert audit.",
+  "geography_source": "https://unstats.un.org/unsd/methodology/m49/"
+}

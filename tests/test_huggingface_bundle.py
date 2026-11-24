@@ -10,6 +10,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE = ROOT / "huggingface"
+from grade_helpers import prediction as fixture_prediction
 
 
 def records(path):
@@ -18,10 +19,10 @@ def records(path):
 
 class HuggingFaceBundleTest(unittest.TestCase):
     def test_join_preserves_every_question_choice_and_gold(self):
-        questions = {r["id"]: r for r in records(ROOT / "data/v1.4.1-release/questions.jsonl")}
-        answers = {r["id"]: r for r in records(ROOT / "data/v1.4.1-release/answers.jsonl")}
+        questions = {r["id"]: r for r in records(ROOT / "data/v2.0/questions.jsonl")}
+        answers = {r["id"]: r for r in records(ROOT / "data/v2.0/answers.jsonl")}
         rows = records(BUNDLE / "data/test.jsonl")
-        self.assertEqual(len(rows), 720)
+        self.assertEqual(len(rows), 360)
         self.assertEqual({r["question_id"] for r in rows}, set(questions))
         for row in rows:
             q, a = questions[row["question_id"]], answers[row["question_id"]]
@@ -32,7 +33,7 @@ class HuggingFaceBundleTest(unittest.TestCase):
 
     def test_manifest_covers_unchanged_data_and_standalone_scorer(self):
         manifest = json.loads((BUNDLE / "manifest.json").read_text())
-        self.assertEqual(manifest["num_examples"], 720)
+        self.assertEqual(manifest["num_examples"], 360)
         self.assertIn("evaluate.py", manifest["files"])
         for name, digest in manifest["files"].items():
             self.assertEqual(hashlib.sha256((BUNDLE / name).read_bytes()).hexdigest(), digest, name)
@@ -40,18 +41,18 @@ class HuggingFaceBundleTest(unittest.TestCase):
                          (ROOT / "src/world_legal_bench/parser.py").read_bytes())
 
     def test_standalone_scorer_reproduces_reference_profile(self):
-        selected = records(ROOT / "provenance/selection.jsonl")
+        selected = records(ROOT / "provenance/v2.0/selection.jsonl")
         with tempfile.TemporaryDirectory() as tmp:
             predictions = Path(tmp) / "predictions.jsonl"
-            predictions.write_text("".join(json.dumps({"id": r["id"], "prediction": r["reference_choice"]})
+            predictions.write_text("".join(json.dumps(fixture_prediction(r["id"], r["reference_choice"], r["reference_outcome"]))
                                              + "\n" for r in selected))
             result = subprocess.run([sys.executable, str(BUNDLE / "evaluate.py"),
                                      "--predictions", str(predictions)], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             report = json.loads(result.stdout)
-            self.assertEqual((report["correct"], report["incorrect"], report["invalid"]), (128, 592, 0))
+            self.assertEqual((report["correct"], report["incorrect"], report["invalid"]), (33, 301, 26))
             self.assertTrue(report["complete"])
-            self.assertAlmostEqual(report["macro_accuracy"], 100 * 128 / 720)
+            self.assertAlmostEqual(report["region_macro_accuracy"], 9.127202294483556)
 
     def test_standalone_partial_report_does_not_claim_full_score(self):
         result = subprocess.run([sys.executable, str(BUNDLE / "evaluate.py"), "--predictions",
@@ -59,7 +60,7 @@ class HuggingFaceBundleTest(unittest.TestCase):
                                 capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         report = json.loads(result.stdout)
-        self.assertEqual((report["submitted"], report["missing"]), (3, 717))
+        self.assertEqual((report["submitted"], report["missing"]), (3, 357))
         self.assertFalse(report["complete"])
         self.assertIsNone(report["macro_accuracy"])
 

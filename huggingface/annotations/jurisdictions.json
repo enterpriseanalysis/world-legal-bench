@@ -5,7 +5,8 @@
     "name_zh": "美国",
     "language": "en",
     "language_name": "English",
-    "cases": 60
+    "cases": 23,
+    "region": "Americas"
   },
   {
     "code": "CA",
@@ -13,7 +14,8 @@
     "name_zh": "加拿大",
     "language": "fr",
     "language_name": "French",
-    "cases": 60
+    "cases": 42,
+    "region": "Americas"
   },
   {
     "code": "AU",
@@ -21,7 +23,8 @@
     "name_zh": "澳大利亚",
     "language": "en",
     "language_name": "English",
-    "cases": 60
+    "cases": 36,
+    "region": "Oceania"
   },
   {
     "code": "KR",
@@ -29,7 +32,8 @@
     "name_zh": "韩国",
     "language": "ko",
     "language_name": "Korean",
-    "cases": 60
+    "cases": 62,
+    "region": "Asia"
   },
   {
     "code": "FR",
@@ -37,7 +41,8 @@
     "name_zh": "法国",
     "language": "fr",
     "language_name": "French",
-    "cases": 60
+    "cases": 45,
+    "region": "Europe"
   },
   {
     "code": "BR",
@@ -45,7 +50,8 @@
     "name_zh": "巴西",
     "language": "pt",
     "language_name": "Portuguese",
-    "cases": 60
+    "cases": 4,
+    "region": "Americas"
   },
   {
     "code": "MX",
@@ -53,7 +59,8 @@
     "name_zh": "墨西哥",
     "language": "es",
     "language_name": "Spanish",
-    "cases": 60
+    "cases": 15,
+    "region": "Americas"
   },
   {
     "code": "CN",
@@ -61,7 +68,8 @@
     "name_zh": "中国",
     "language": "zh-Hans",
     "language_name": "Simplified Chinese",
-    "cases": 60
+    "cases": 11,
+    "region": "Asia"
   },
   {
     "code": "JP",
@@ -69,7 +77,8 @@
     "name_zh": "日本",
     "language": "ja",
     "language_name": "Japanese",
-    "cases": 60
+    "cases": 58,
+    "region": "Asia"
   },
   {
     "code": "IN",
@@ -77,7 +86,8 @@
     "name_zh": "印度",
     "language": "hi",
     "language_name": "Hindi",
-    "cases": 60
+    "cases": 9,
+    "region": "Asia"
   },
   {
     "code": "ZA",
@@ -85,7 +95,8 @@
     "name_zh": "南非",
     "language": "en",
     "language_name": "English",
-    "cases": 60
+    "cases": 38,
+    "region": "Africa"
   },
   {
     "code": "ID",
@@ -93,6 +104,7 @@
     "name_zh": "印度尼西亚",
     "language": "id",
     "language_name": "Indonesian",
-    "cases": 60
+    "cases": 17,
+    "region": "Asia"
   }
 ]

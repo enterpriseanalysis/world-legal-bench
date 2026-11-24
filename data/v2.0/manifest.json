@@ -1,0 +1,42 @@
+{
+  "name": "World Legal Bench",
+  "version": "2.0",
+  "mode": "closed_book",
+  "case_count": 360,
+  "jurisdictions": 12,
+  "languages": 9,
+  "regions": 5,
+  "country_counts": {
+    "US": 23,
+    "CA": 42,
+    "AU": 36,
+    "KR": 62,
+    "FR": 45,
+    "BR": 4,
+    "MX": 15,
+    "CN": 11,
+    "JP": 58,
+    "IN": 9,
+    "ZA": 38,
+    "ID": 17
+  },
+  "answer_labels": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "scoring_protocol": "world-legal-bench-mcq-v2.0",
+  "judge_version": "world-legal-llm-judge-v2.0",
+  "jurisdictions_file": "data/v2.0/jurisdictions.json",
+  "provenance_dir": "provenance/v2.0",
+  "files": {
+    "data/v2.0/questions.jsonl": "4ed2f2eb1b4c9d0ed8475c19206fd984ad4b4a7936dda2b4ce897b93790428d8",
+    "data/v2.0/answers.jsonl": "261ac7ca41805265fd19a36f2fb5daf1929f7acdb08abace43670bf7f7c4fc1c",
+    "data/v2.0/sources.jsonl": "2e72b94f19cf97c39b1a92e33300b821a7d7f1d53deb60661fbb3e5b51ef7552",
+    "data/v2.0/jurisdictions.json": "c5a997f91b7014a347bf623e7111c42252dd51ceddabd3d4a61b051cf85ef5fc",
+    "provenance/v2.0/selection.jsonl": "3df583d14741c5bafcc3ab462e7e9b4c3bb6a854721dc766425285f326174cc1",
+    "provenance/v2.0/reference_selection.json": "0945e8ac23aa3c3531fd46dbfa5ff1738b5370fa4335eb357dcc43852dc7791d",
+    "provenance/v2.0/release.json": "fa749474698f796c46dad0d8f4ef1582796dc62ba26e259edda0b0e5e786c7d9"
+  }
+}

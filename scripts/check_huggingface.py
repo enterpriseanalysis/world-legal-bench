@@ -23,11 +23,11 @@ assert config == [{"config_name": "default", "default": True,
 
 with tempfile.TemporaryDirectory(prefix="wlb-hf-cache-") as cache:
     dataset = load_dataset(str(BUNDLE), name="default", split="test", cache_dir=cache)
-    assert len(dataset) == 720
+    assert len(dataset) == 360
     counts = Counter(dataset["country"])
-    assert len(counts) == 12 and set(counts.values()) == {60}
+    assert len(counts) == 12 and dict(counts) == json.loads((ROOT/'data/v2.0/manifest.json').read_text())['country_counts']
     assert len(set(dataset["language"])) == 9
-    assert len(set(dataset["question_id"])) == 720
+    assert len(set(dataset["question_id"])) == 360
     for row in dataset:
         assert len(row["choices"]) == 4
         assert row["choices"]["ABCD".index(row["answer"])] == row["answer"] + ". " + row["answer_text"]
