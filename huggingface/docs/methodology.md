@@ -46,7 +46,7 @@ Two overall measures must be reported:
 
 Do not average country percentages equally within a region: country quotas differ. Weight country accuracies by their selected item counts, or compute regional accuracy directly from item outcomes. Country-macro accuracy may be retained as a diagnostic, but it must not be substituted for region-macro accuracy without changing its label.
 
-The selected historical record yields 9.17% item-micro and 9.13% region-macro accuracy. These values are conditional on selecting the same model's nonpasses. They are not a fresh evaluation, an estimate on an independent holdout, or a guarantee that a rerun will remain below 10%. A different model may answer the retained items correctly. The scoring software withholds full-release macro scores when prediction coverage is incomplete.
+The selected historical record yields 9.17% item-micro and 9.13% region-macro accuracy. These values are conditional on selecting the same model's nonpasses. They are not a fresh evaluation, an estimate on an independent holdout, or a guarantee that a rerun will remain below 10%. A different model may answer the retained items correctly. The public offline scorer withholds full-release macro scores when prediction coverage is incomplete.
 
 ## Quality and interpretation limits
 
